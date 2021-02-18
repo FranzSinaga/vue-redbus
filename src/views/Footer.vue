@@ -49,7 +49,7 @@
               </div>
             </div>
             <div class="row pt-5 mb-5 justify-content-center">
-                <img src="../assets/sslcommerz_logo.png" alt="footer"/>
+                <img class="img-fluid" src="../assets/sslcommerz_logo.png" alt="footer"/>
             </div>
           </div>
         </div>

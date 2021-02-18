@@ -3,8 +3,8 @@
         <!-- <div class="overlap"></div> -->
         <div class="container">
           <div class="row justify-content-center pb-5 pt-3">
-            <div class="col-md-5 block mt-3">
-              <form @submit="submitForm($event)">
+            <div class="col-md-5 mt-3 card ">
+              <form @submit="submitForm($event)" class="card-body">
                 <div class="row">
                   <div class="form-group col-md-6">
                     <label>Leaving From</label>
@@ -52,7 +52,7 @@
             </div>
 
             <div class="col-md-5 slider mt-3 ">
-              <img class="img-fluid" src="../assets/logo.png" alt="red-bus" />
+              <img class="img-fluid" id="bussImage" src="../assets/logo.png" alt="red-bus" />
             </div>
             <!-- <p style="color:white;background-color:black">{{getDest}}</p>
             <br><br>

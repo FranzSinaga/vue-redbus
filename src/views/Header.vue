@@ -4,7 +4,7 @@
           <div class="container">
             <div class="row">
               <div class="col-md-6 logo">
-                <img src="../assets/redbus_india_logo.png" alt="logo">
+                <img class="img-fluid" src="../assets/redbus_india_logo.png" alt="logo">
               </div>
               <div class="col-md-6">
                 <span class="login">Login</span>

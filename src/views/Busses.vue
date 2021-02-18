@@ -26,8 +26,8 @@
             </div>
           </div>
         </div>
-        <div class="row search-result mb-5 pb-5">
-          <table class="table">
+        <div class="row search-result mb-5 pb-5 text-center">
+          <table class="table table-responsive-md" style="min-width:100%">
             <thead>
               <tr>
                 <th>Bus Name</th>
@@ -35,7 +35,7 @@
                 <th>Coach Type</th>
                 <th>Seats Availiable</th>
                 <th>Fare</th>
-                <th></th>
+                <th>View Seat</th>
               </tr>
             </thead>
             <tbody>

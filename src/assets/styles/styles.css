@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-body {
-}
+
 
 .header-top {
   background: #fff;
@@ -12,7 +11,22 @@ body {
   float: right;
   padding: 3px 20px;
   margin: 10px;
+  margin-top: 30px;
 }
+
+@media screen and (max-width: 992px) {
+  .block {
+    background: #fbfbfb;
+    height: 276px;
+    padding: 35px;
+    margin-top: 20px;
+  }
+
+  img#bussImage {
+    display: none;
+  }
+}
+
 .header-top p {
   float: right;
 }
@@ -127,45 +141,4 @@ table {
 }
 .alert {
   float: left;
-}
-
-/* MODAL WIDTH EDIT  */
-
-.modal-dialog {
-  max-width: 900px !important;
-}
-
-/* MODAL WIDTH EDIT  */
-
-.j_details p {
-  margin: 3px 0px;
-  font-size: 13px;
-}
-
-.ticket {
-  border: 1px solid #ccc;
-  box-shadow: 1px 0px 9px 2px #ccc;
-  margin: 26px;
-}
-.ticket table {
-  border: none;
-}
-
-.ticket table thead {
-  border: none;
-  background: #fcfce0;
-  font-weight: bold;
-}
-.ticket table td {
-  border: none;
-}
-
-.ticket table.ps_details {
-  border: 1px solid #ccc;
-}
-
-.ticket table.ps_details span {
-  color: #424242;
-  font-size: 12px;
-  padding: 0 6px;
 }
