@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div>
     <Header />
     <router-view />
     <Footer />
@@ -7,17 +7,17 @@
 </template>
 
 <script>
-import Header from './views/Header'
-import Footer from './views/Footer'
+import Header from "./views/Header";
+import Footer from "./views/Footer";
 export default {
   components: {
     Header: Header,
     Footer: Footer
   }
-}
+};
 </script>
 <style>
-@import './assets/styles/styles.css';
+@import "./assets/styles/styles.css";
 /* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

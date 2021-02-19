@@ -27,6 +27,15 @@
   }
 }
 
+.link {
+  text-decoration: none;
+  color: white
+}
+.link:hover{
+  text-decoration: none;
+  color: lightblue
+}
+
 .header-top p {
   float: right;
 }
