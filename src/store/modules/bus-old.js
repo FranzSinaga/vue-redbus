@@ -8,12 +8,6 @@ const mutations = {
     }
 }
 const getters = {
-    getForm: state => {
-        return state.form;
-    },
-    getDestination: state => {
-        return state.destination;
-    },
     getBus: state => {
         return state.bus;
     }

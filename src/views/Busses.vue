@@ -93,7 +93,7 @@
                     <img src="../assets/handle.png" class="float-right m-2" />
                     <table
                       class="table text-center"
-                      v-for="(line, idx) in seats"
+                      v-for="(line, idx) in getSeats"
                       :key="idx"
                     >
                       <tr>
@@ -164,14 +164,7 @@
 export default {
   data() {
     return {
-      seats: [
-        ["A1", "A2", "A3", "A4"],
-        ["B1", "B2", "B3", "B4"],
-        ["C1", "C2", "C3", "C4"],
-        ["D1", "D2", "D3", "D4"]
-      ],
       seatSelected: [],
-      fare: 1000,
       errMessage: false
     };
   },
@@ -181,7 +174,10 @@ export default {
   },
   computed: {
     getBus: function() {
-      return this.$store.state.bus.bus;
+      return this.$store.getters['bus/getBus'];
+    },
+    getSeats: function () {
+      return this.$store.getters['bus/getSeats']
     }
   },
   methods: {
@@ -200,6 +196,7 @@ export default {
           let isExist = this.seatSelected.filter(e => {
             return seat === e;
           });
+          console.log(isExist)
           if (isExist.length === 0) {
             this.seatSelected.push(seat);
           }

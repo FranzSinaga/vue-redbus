@@ -87,12 +87,12 @@ export default {
     };
   },
   components: {},
-  mounted() {
+  created() {
     this.$store.dispatch("home/getForm");
   },
   computed: {
     getForm: function() {
-      return this.$store.state.home.form;
+      return this.$store.getters['home/getForm'];
     },
     getDest: {
       get: function() {
@@ -105,8 +105,7 @@ export default {
   },
   methods: {
     selectLeaveFrom() {
-      const data = this.$store.state.home.form;
-      data.forEach(element => {
+      this.$store.getters['home/getForm'].forEach(element => {
         if (this.lf === "") {
           this.getDest = [];
         } else if (element.lf === this.lf) {
@@ -117,7 +116,7 @@ export default {
 
     submitForm(e) {
       e.preventDefault();
-      const data = this.$store.state.home.destination;
+      const data = this.$store.getters['home/getDestination'];
       const id = data.filter(e => {
         if (e.name === this.gt) {
           return e.id;

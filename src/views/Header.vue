@@ -11,8 +11,8 @@
             />
           </div>
           <div class="col-md-6">
-            <span class="login">Login</span>
-            <span class="login">Sign up</span>
+            <!-- <span class="login">Login</span>
+            <span class="login">Sign up</span> -->
           </div>
         </div>
       </div>
