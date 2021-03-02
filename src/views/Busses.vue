@@ -1,9 +1,9 @@
 <template>
-  <div class="container mt-4 ">
+  <div class="container mt-4">
     <div class="row justify-content-center">
       <div class="col-md-10">
         <div class="row text-center">
-          <h6 class=" text-capitalize col-md-12 mb-3 text-center">
+          <h6 class="text-capitalize col-md-12 mb-3 text-center">
             {{ this.$route.query.lf }} - {{ this.$route.query.gt }} On
             {{ this.$route.query.date }}
           </h6>
@@ -26,8 +26,8 @@
             </div>
           </div>
         </div>
-        <div class="row search-result mb-5 pb-5 text-center">
-          <table class="table table-responsive-md" style="min-width:100%">
+        <div class="row search-result mb-5 pb-5 text-center" v-if="getBus">
+          <table class="table table-responsive-md" style="min-width: 100%">
             <thead>
               <tr>
                 <th>Bus Name</th>
@@ -46,7 +46,7 @@
                 <td>{{ bus.seat }}</td>
                 <td>{{ bus.fare }}</td>
                 <td>
-                  <button
+                  <!-- <button
                     type="button"
                     @click="fare = bus.fare"
                     class="btn btn-danger"
@@ -54,7 +54,13 @@
                     data-target="#detail"
                   >
                     View Seats
-                  </button>
+                  </button> -->
+                  <b-button
+                    v-b-modal.modal-1
+                    @click="fare = bus.fare"
+                    class="btn btn-danger"
+                    >View Seats</b-button
+                  >
                 </td>
               </tr>
             </tbody>
@@ -63,100 +69,75 @@
       </div>
     </div>
 
-    <div
-      class="modal fade"
-      id="detail"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
+    <b-modal
+      hide-footer
+      :no-close-on-backdrop="true"
+      id="modal-1"
+      title="BootstrapVue"
+      @show="closeModal()"
     >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-              @click="closeModal()"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-6">
-                  <h5>Select Seat</h5>
-                  <div style="border: solid 1px lightgray;" class="p-2 mt-5">
-                    <img src="../assets/handle.png" class="float-right m-2" />
-                    <table
-                      class="table text-center"
-                      v-for="(line, idx) in getSeats"
-                      :key="idx"
-                    >
-                      <tr>
-                        <td v-for="(cell, i) in line" :key="i">
-                          <img
-                            style="cursor:pointer;"
-                            src="../assets/bseat.png"
-                            :alt="cell"
-                            @click="onSelectSeat(cell)"
-                            :id="cell"
-                          />
-                          {{ cell }}
-                        </td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>Seats</th>
-                        <th>Fare</th>
-                        <th>Class</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr v-for="seat in seatSelected" :key="seat">
-                        <td>{{ seat }}</td>
-                        <td>{{ fare }}</td>
-                        <td>Economy</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <h6>
-                    Total: {{ this.seatSelected.length * this.fare || 0 }}
-                  </h6>
-                  <div
-                    v-if="this.errMessage"
-                    class="alert alert-danger mt-2"
-                    style="width: 100%"
-                    role="alert"
-                  >
-                    You can buy only 4 seats in one time
-                  </div>
-                </div>
-              </div>
+      <!-- <div class="modal-dialog"> -->
+      <!-- <div class="modal-content">
+          <div class="modal-body"> -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Select Seat</h5>
+            <div style="border: solid 1px lightgray" class="p-2 mt-5">
+              <img src="../assets/handle.png" class="float-right m-2" />
+              <table
+                class="table text-center"
+                v-for="(line, idx) in getSeats"
+                :key="idx"
+              >
+                <tr>
+                  <td v-for="(cell, i) in line" :key="i">
+                    <img
+                      style="cursor: pointer"
+                      src="../assets/bseat.png"
+                      :alt="cell"
+                      @click="onSelectSeat(cell)"
+                      :id="cell"
+                    />
+                    {{ cell }}
+                  </td>
+                </tr>
+              </table>
             </div>
           </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              @click="closeModal()"
-              data-dismiss="modal"
+          <div class="col-md-6">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Seats</th>
+                  <th>Fare</th>
+                  <th>Class</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="seat in seatSelected" :key="seat">
+                  <td>{{ seat }}</td>
+                  <td>{{ fare }}</td>
+                  <td>Economy</td>
+                </tr>
+              </tbody>
+            </table>
+            <h6>Total: {{ this.seatSelected.length * fare || 0 }}</h6>
+            <div
+              v-if="this.errMessage"
+              class="alert alert-danger mt-2"
+              style="width: 100%"
+              role="alert"
             >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Confirm</button>
+              You can buy only 4 seats in one time
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <!-- </div>
+        </div> -->
+      <!-- </div> -->
+    </b-modal>
   </div>
 </template>
 
@@ -165,7 +146,8 @@ export default {
   data() {
     return {
       seatSelected: [],
-      errMessage: false
+      errMessage: false,
+      fare: 0,
     };
   },
   mounted() {
@@ -173,17 +155,17 @@ export default {
     this.$store.dispatch("bus/getBus", id);
   },
   computed: {
-    getBus: function() {
-      return this.$store.getters['bus/getBus'];
+    getBus: function () {
+      return this.$store.getters["bus/getBus"];
     },
     getSeats: function () {
-      return this.$store.getters['bus/getSeats']
-    }
+      return this.$store.getters["bus/getSeats"];
+    },
   },
   methods: {
     closeModal() {
       this.err = false;
-      this.seatSelected.map(e => {
+      this.seatSelected.map((e) => {
         document.getElementById(e).src = require("../assets/bseat.png");
       });
       this.seatSelected = [];
@@ -193,10 +175,10 @@ export default {
         if (this.seatSelected.length === 0) {
           this.seatSelected.push(seat);
         } else {
-          let isExist = this.seatSelected.filter(e => {
+          let isExist = this.seatSelected.filter((e) => {
             return seat === e;
           });
-          console.log(isExist)
+          console.log(isExist);
           if (isExist.length === 0) {
             this.seatSelected.push(seat);
           }
@@ -205,8 +187,8 @@ export default {
       } else {
         this.errMessage = true;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

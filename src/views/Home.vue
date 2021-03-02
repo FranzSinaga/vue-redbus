@@ -54,7 +54,7 @@
             <button
               type="submit"
               :disabled="gt === ''"
-              class="btn btn-block mt-3 btn-search btn-sm"
+              class="btn btn-block mt-3 btn-search btn-sm btn-primary"
             >
               Search Busses
             </button>
@@ -92,7 +92,7 @@ export default {
   },
   computed: {
     getForm: function() {
-      return this.$store.getters['home/getForm'];
+      return this.$store.getters["home/getForm"];
     },
     getDest: {
       get: function() {
@@ -105,7 +105,7 @@ export default {
   },
   methods: {
     selectLeaveFrom() {
-      this.$store.getters['home/getForm'].forEach(element => {
+      this.$store.getters["home/getForm"].forEach(element => {
         if (this.lf === "") {
           this.getDest = [];
         } else if (element.lf === this.lf) {
@@ -116,7 +116,7 @@ export default {
 
     submitForm(e) {
       e.preventDefault();
-      const data = this.$store.getters['home/getDestination'];
+      const data = this.$store.getters["home/getDestination"];
       const id = data.filter(e => {
         if (e.name === this.gt) {
           return e.id;

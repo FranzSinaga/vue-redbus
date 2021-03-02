@@ -1,10 +1,10 @@
-const getForm = (state) => {
+const getForm = state => {
     return state.form;
-},
-getDestination = (state) => {
+  },
+  getDestination = state => {
     return state.destination;
-}
-export default{
-    getForm,
-    getDestination
-}
+  };
+export default {
+  getForm,
+  getDestination
+};

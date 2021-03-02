@@ -1,12 +1,12 @@
-const getBus = (state) => {
-    return state.bus;
-}
+const getBus = state => {
+  return state.bus;
+};
 
-const getSeats = (state) => {
-    return state.seats
-}
+const getSeats = state => {
+  return state.seats;
+};
 
-export default{
-    getBus,
-    getSeats
-}
+export default {
+  getBus,
+  getSeats
+};

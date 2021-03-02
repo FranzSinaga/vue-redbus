@@ -1,7 +1,7 @@
 const setBus = (state, bus) => {
-    state.bus = bus;
-}
+  state.bus = bus;
+};
 
-export default{
-    setBus
-}
+export default {
+  setBus
+};
